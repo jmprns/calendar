@@ -9,7 +9,7 @@ class EventsController extends Controller
 {
     public function show(Event $event)
     {
-        return response($event);
+        return response()->json($event);
     }
 
     public function upsert(EventRequest $request, $id)
