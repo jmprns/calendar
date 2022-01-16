@@ -22,16 +22,18 @@ class Calendar extends Component
 
     public function eventUpsert($data)
     {
-
         // fixing the days
         $data['days'] = array_map('intval', $data['days']);
 
         $event = Event::updateOrCreate(
-            ['id' => $this->event->id ?? 0],
+            ['id' => $this->event['id'] ?? 0],
             $data
         );
 
+        $status = ($event->wasRecentlyCreated) ? "created" : "updated";
         $this->event = $event->toArray();
+
+        $this->dispatchBrowserEvent('alert-livewire', ['message' => 'Event was '.$status.' successfully.']);
     }
 
     public function toggleDate($method)
