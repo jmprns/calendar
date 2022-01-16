@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('vue', 'vue');
-Route::view('react', 'react');
+Route::redirect('/', '/react');
 
-Route::get('livewire', Container::class);
+
+Route::view('react', 'react');
+Route::view('livewire', 'livewire');
