@@ -16,8 +16,7 @@ const Form = () => {
 
     const {
         register,
-        handleSubmit,
-        formState
+        handleSubmit
     } = useForm();
 
     const onSubmit = (data) => {
@@ -38,9 +37,6 @@ const Form = () => {
             const err = error.response.data
 
             toast.error(<ErrorToast message={err.message} errors={err.errors}  />)
-
-            console.log(err.errors)
-
         }).finally(() => {
 
             setIsLoading(false)
@@ -73,7 +69,7 @@ const Form = () => {
                         </label>
                         <input
                             type="date"
-                            {...register("start")}
+                            {...register("start", {required: true})}
                             className={inputClass}
                         />
                     </div>
@@ -84,7 +80,7 @@ const Form = () => {
                         </label>
                         <input
                             type="date"
-                            {...register("end")}
+                            {...register("end", {required: true})}
                             className={inputClass}
                         />
                     </div>

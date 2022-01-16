@@ -2489,8 +2489,7 @@ var Form = function Form() {
 
   var _useForm = (0,react_hook_form__WEBPACK_IMPORTED_MODULE_3__.useForm)(),
       register = _useForm.register,
-      handleSubmit = _useForm.handleSubmit,
-      formState = _useForm.formState;
+      handleSubmit = _useForm.handleSubmit;
 
   var onSubmit = function onSubmit(data) {
     setIsLoading(true);
@@ -2510,7 +2509,6 @@ var Form = function Form() {
         message: err.message,
         errors: err.errors
       }));
-      console.log(err.errors);
     })["finally"](function () {
       setIsLoading(false);
     });
@@ -2542,7 +2540,9 @@ var Form = function Form() {
             children: "From"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", _objectSpread(_objectSpread({
             type: "date"
-          }, register("start")), {}, {
+          }, register("start", {
+            required: true
+          })), {}, {
             className: inputClass
           }))]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
@@ -2552,7 +2552,9 @@ var Form = function Form() {
             children: "To"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", _objectSpread(_objectSpread({
             type: "date"
-          }, register("end")), {}, {
+          }, register("end", {
+            required: true
+          })), {}, {
             className: inputClass
           }))]
         })]
